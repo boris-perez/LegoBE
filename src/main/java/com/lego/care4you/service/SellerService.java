@@ -2,6 +2,7 @@ package com.lego.care4you.service;
 
 import com.lego.care4you.domain.Seller;
 import com.lego.care4you.repository.SellerRepository;
+import com.lego.care4you.service.bootstrap.GenericService;
 import com.lego.care4you.web.SellerController;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,7 @@ public class SellerService extends GenericService<Seller, SellerController.Selle
 
     @Override
     public Seller update(String id, SellerController.SellerRequestDTO dto) {
+        // TODO: fix this implementation
         Seller seller = createSeller(dto);
         seller.setId(id);
 

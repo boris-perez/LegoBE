@@ -1,4 +1,4 @@
-package com.lego.care4you.domain;
+package com.lego.care4you.domain.bootstrap;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.time.Instant;
 
 @Getter
 @Setter
-public class DomainBase {
+public class GenericDomain {
     @Id
     private String id;
 

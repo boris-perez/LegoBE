@@ -8,6 +8,7 @@ import com.lego.care4you.repository.BuyerRepository;
 import com.lego.care4you.repository.CarRepository;
 import com.lego.care4you.repository.RegistryCarSoldRepository;
 import com.lego.care4you.repository.SellerRepository;
+import com.lego.care4you.service.bootstrap.GenericService;
 import com.lego.care4you.web.RegistryCarSoldController;
 import org.springframework.stereotype.Service;
 
@@ -72,6 +73,7 @@ public class RegistryCarSoldService extends GenericService<RegistryCarSold, Regi
 
     @Override
     public RegistryCarSold update(String id, RegistryCarSoldController.RegistryCarSoldRequestDTO dto) {
+        // TODO: fix this implementationtatus
         Seller seller = sellerRepository.findOne(dto.getSellerId());
         Buyer buyer = buyerRepository.findOne(dto.getBuyerId());
         Car car = carRepository.findOne(dto.getCarId());

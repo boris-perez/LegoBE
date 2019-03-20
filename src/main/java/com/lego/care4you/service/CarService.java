@@ -3,6 +3,7 @@ package com.lego.care4you.service;
 
 import com.lego.care4you.domain.Car;
 import com.lego.care4you.repository.CarRepository;
+import com.lego.care4you.service.bootstrap.GenericService;
 import com.lego.care4you.web.CarController;
 import org.springframework.stereotype.Service;
 
@@ -50,8 +51,8 @@ public class CarService extends GenericService<Car, CarController.CarRequestDTO>
 
     @Override
     public Car update(String id, CarController.CarRequestDTO dto) {
-        Car car = createCar(dto);
-        car.setId(id);
+        Car car = carRepository.findOne(id);
+        updateCar(car, dto);
 
         carRepository.save(car);
 
@@ -60,11 +61,19 @@ public class CarService extends GenericService<Car, CarController.CarRequestDTO>
 
     private static Car createCar(CarController.CarRequestDTO dto) {
         Car car = new Car();
+        setInfo(dto, car);
+        return car;
+    }
+
+    private static void updateCar(Car car, CarController.CarRequestDTO dto) {
+        setInfo(dto, car);
+    }
+
+    private static void setInfo(CarController.CarRequestDTO dto, Car car) {
         car.setBrand(dto.getBrand());
         car.setColor(dto.getColor());
         car.setImageUrl(dto.getImageUrl());
         car.setModel(dto.getModel());
         car.setYear(dto.getYear());
-        return car;
     }
 }

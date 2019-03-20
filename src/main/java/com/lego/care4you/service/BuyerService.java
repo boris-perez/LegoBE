@@ -3,6 +3,7 @@ package com.lego.care4you.service;
 
 import com.lego.care4you.domain.Buyer;
 import com.lego.care4you.repository.BuyerRepository;
+import com.lego.care4you.service.bootstrap.GenericService;
 import com.lego.care4you.web.BuyerController;
 import org.springframework.stereotype.Service;
 
@@ -50,8 +51,8 @@ public class BuyerService extends GenericService<Buyer, BuyerController.BuyerReq
 
     @Override
     public Buyer update(String id, BuyerController.BuyerRequestDTO buyerRequestDTO) {
-        Buyer buyer = createBuyer(buyerRequestDTO);
-        buyer.setId(id);
+        Buyer buyer = buyerRepository.findOne(id);
+        updateBuyer(buyer, buyerRequestDTO);
 
         buyerRepository.save(buyer);
 
@@ -65,5 +66,12 @@ public class BuyerService extends GenericService<Buyer, BuyerController.BuyerReq
         buyer.setCi(dto.getCi());
         buyer.setProfession(dto.getProfession());
         return buyer;
+    }
+
+    private static void updateBuyer(Buyer buyer, BuyerController.BuyerRequestDTO dto) {
+        buyer.setName(dto.getName());
+        buyer.setCellphone(dto.getCellphone());
+        buyer.setCi(dto.getCi());
+        buyer.setProfession(dto.getProfession());
     }
 }

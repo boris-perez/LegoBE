@@ -1,4 +1,4 @@
-package com.lego.care4you.service;
+package com.lego.care4you.service.bootstrap;
 
 import java.util.List;
 

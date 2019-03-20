@@ -1,5 +1,6 @@
 package com.lego.care4you.domain;
 
+import com.lego.care4you.domain.bootstrap.GenericDomain;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -13,7 +14,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Document
-public class RegistryCarSold extends DomainBase {
+public class RegistryCarSold extends GenericDomain {
     private Date sellDate;
     @DBRef
     private Seller seller;
