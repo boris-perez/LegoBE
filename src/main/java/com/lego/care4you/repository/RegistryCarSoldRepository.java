@@ -1,0 +1,15 @@
+package com.lego.care4you.repository;
+
+
+import com.lego.care4you.domain.RegistryCarSold;
+import org.springframework.data.jpa.repository.Query;
+
+/**
+ * Created by Alan.
+ */
+public interface RegistryCarSoldRepository extends GenericRepository<RegistryCarSold> {
+
+    @Query("{ 'seller.id' : ?0 }")
+    RegistryCarSold findRegistriesBySeller(String id);
+
+}
