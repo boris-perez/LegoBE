@@ -14,9 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SafetyEquipment extends GenericDomain {
 
     private String name;
-
     private String description;
-
     private Integer stock;
 
     private Byte[] image;
