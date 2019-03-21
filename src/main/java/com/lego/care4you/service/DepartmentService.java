@@ -53,13 +53,13 @@ public class DepartmentService extends GenericService<Department, DepartmentRequ
     private Department buildCreateDepartment(DepartmentRequestDTO dto) {
         Department department = new Department();
         department.setName(dto.getName());
-        department.setDescription(dto.getDescription());
+        department.setCode(dto.getCode());
 
         return department;
     }
 
     private void buildUpdateDepartment(Department department, DepartmentRequestDTO dto) {
         department.setName(dto.getName());
-        department.setDescription(dto.getDescription());
+        department.setCode(dto.getCode());
     }
 }

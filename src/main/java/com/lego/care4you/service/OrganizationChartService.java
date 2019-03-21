@@ -53,14 +53,14 @@ public class OrganizationChartService extends GenericService<OrganizationChart, 
 
     private OrganizationChart buildCreateOrganizationChart(OrganizationChartRequestDTO dto) {
         OrganizationChart organizationChart = new OrganizationChart();
-        organizationChart.setName(dto.getName());
+        organizationChart.setTitle(dto.getTitle());
         organizationChart.setDescription(dto.getDescription());
 
         return organizationChart;
     }
 
     private void buildUpdateOrganizationChart(OrganizationChart organizationChart, OrganizationChartRequestDTO dto) {
-        organizationChart.setName(dto.getName());
+        organizationChart.setTitle(dto.getTitle());
         organizationChart.setDescription(dto.getDescription());
     }
 }

@@ -68,7 +68,7 @@ public class WorkService extends GenericService<Work, WorkController.WorkRequest
 
     private Work buildCreateWork(WorkController.WorkRequestDTO dto) {
         Work work = new Work();
-        work.setWorkAmount(dto.getWorkAmount);
+        work.setWorkAmount(dto.getWorkAmount());
         work.setWorkCode(dto.getWorkCode());
         work.setEndDate(new Date());
         work.setInitDate(new Date());
@@ -81,7 +81,7 @@ public class WorkService extends GenericService<Work, WorkController.WorkRequest
     }
 
     private void buildUpdateWork(Work work, WorkController.WorkRequestDTO dto){
-        work.setWorkAmount(dto.getWorkAmount);
+        work.setWorkAmount(dto.getWorkAmount());
         work.setWorkCode(dto.getWorkCode());
         work.setPaymentType(dto.getPaymentType());
 

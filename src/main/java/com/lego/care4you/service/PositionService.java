@@ -58,7 +58,7 @@ public class PositionService extends GenericService<Position, PositionRequestDTO
         Position position = new Position();
         position.setName(dto.getName());
         position.setDescription(dto.getDescription());
-        position.setDateStrat(new Date());
+        position.setDateStart(new Date());
         position.setDateEnd(new Date());
 
         return position;

@@ -52,7 +52,7 @@ public class WorkController {
         private String workAmount;
         private String workCode;
         private String paymentType;
-        private String pisitionId;
+        private String positionId;
         private String employeeId;
     }
 }

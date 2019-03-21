@@ -52,16 +52,16 @@ public class SafetyEquipmentService extends GenericService<SafetyEquipment, Safe
 
     private SafetyEquipment buildCreateSafetyEquipment(SafetyEquipmentRequestDTO dto) {
         SafetyEquipment safetyEquipment = new SafetyEquipment();
-        safetyEquipment.setName(dto.getName);
-        safetyEquipment.setDescription(dto.getDescription);
-        safetyEquipment.setStock(dto.getStock);
+        safetyEquipment.setName(dto.getName());
+        safetyEquipment.setDescription(dto.getDescription());
+        safetyEquipment.setStock(dto.getStock());
 
         return safetyEquipment;
     }
 
     private void buildUpdateSafetyEquipment(SafetyEquipment safetyEquipment, SafetyEquipmentRequestDTO dto) {
-        safetyEquipment.setName(dto.getName);
-        safetyEquipment.setDescription(dto.getDescription);
-        safetyEquipment.setStock(dto.getStock);
+        safetyEquipment.setName(dto.getName());
+        safetyEquipment.setDescription(dto.getDescription());
+        safetyEquipment.setStock(dto.getStock());
     }
 }
