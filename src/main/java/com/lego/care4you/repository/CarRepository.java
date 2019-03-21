@@ -7,5 +7,6 @@ import com.lego.care4you.repository.bootstrap.GenericRepository;
 /**
  * Created by Alan.
  */
+@Deprecated
 public interface CarRepository extends GenericRepository<Car> {
 }

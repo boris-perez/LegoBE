@@ -9,18 +9,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 /**
- * Created by Alan
+ * @author rveizaga
  */
 @Getter
 @Setter
 @Document
-@Deprecated
-public class RegistryCarSold extends GenericDomain {
-    private Date sellDate;
+public class Work extends GenericDomain {
+
+    private String workAmount;
+    private String workCode;
+    private Date endDate;
+    private Date initDate;
+    private String paymentType;
+
     @DBRef
-    private Seller seller;
+    private Employee employee;
+
     @DBRef
-    private Buyer buyer;
-    @DBRef
-    private Car car;
+    private Position position;
 }

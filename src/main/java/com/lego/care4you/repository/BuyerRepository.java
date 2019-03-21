@@ -7,6 +7,7 @@ import com.lego.care4you.repository.bootstrap.GenericRepository;
 /**
  * Created by Alan.
  */
+@Deprecated
 public interface BuyerRepository extends GenericRepository<Buyer> {
 
 

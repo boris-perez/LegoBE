@@ -3,21 +3,21 @@ package com.lego.care4you.domain;
 import com.lego.care4you.domain.bootstrap.GenericDomain;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Created by Alan.
+ * @author rveizaga
  */
 @Getter
 @Setter
 @Document
-@Deprecated
-public class Seller extends GenericDomain {
-    @Id
-    private String id;
+public class Company extends GenericDomain {
+
+    private String code;
     private String name;
-    private long age;
-    private long ci;
-    private long numCarsSold;
+    private String instructor;
+
+    @DBRef
+    private Department department;
 }

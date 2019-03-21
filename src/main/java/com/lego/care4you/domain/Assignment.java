@@ -6,21 +6,23 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-
 /**
- * Created by Alan
+ * @author rveizaga
  */
 @Getter
 @Setter
 @Document
-@Deprecated
-public class RegistryCarSold extends GenericDomain {
-    private Date sellDate;
+public class Assignment extends GenericDomain {
+
     @DBRef
-    private Seller seller;
+    private OrganizationChart organizationChart;
+
     @DBRef
-    private Buyer buyer;
+    private Department department;
+
     @DBRef
-    private Car car;
+    private SafetyEquipment safetyEquipment;
+
+    @DBRef
+    private Employee employee;
 }

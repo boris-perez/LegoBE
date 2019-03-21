@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 /**
  * Created by Alan.
  */
+@Deprecated
 public interface RegistryCarSoldRepository extends GenericRepository<RegistryCarSold> {
 
     @Query("{ 'seller.id' : ?0 }")

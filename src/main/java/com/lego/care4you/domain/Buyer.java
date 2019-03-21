@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Document
+@Deprecated
 public class Buyer extends GenericDomain {
     private String name;
     private String ci;

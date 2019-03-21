@@ -3,19 +3,19 @@ package com.lego.care4you.domain;
 import com.lego.care4you.domain.bootstrap.GenericDomain;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Created by Alan.
+ * @author rveizaga
  */
 @Getter
 @Setter
 @Document
-@Deprecated
-public class Car extends GenericDomain {
-    private String brand;
-    private long year;
-    private String model;
-    private String color;
-    private String imageUrl;
+public class Rules extends GenericDomain {
+
+    private String state;
+
+    @DBRef
+    private Company company;
 }
