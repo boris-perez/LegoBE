@@ -21,8 +21,5 @@ public class Assignment extends GenericDomain {
     private Department department;
 
     @DBRef
-    private SafetyEquipment safetyEquipment;
-
-    @DBRef
-    private Employee employee;
+    private Position position;
 }

@@ -7,17 +7,16 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * @author rveizaga
+ * @author alain.quinones
  */
 @Getter
 @Setter
 @Document
-public class Company extends GenericDomain {
+public class Responsible extends GenericDomain {
 
-    private String name;
-    private String vision;
-    private String mission;
-    private String address;
-    private String phone;
-    private String email;
+    @DBRef
+    private SafetyEquipment safetyEquipment;
+
+    @DBRef
+    private Employee employee;
 }

@@ -54,16 +54,21 @@ public class CompanyService extends GenericService<Company, CompanyRequestDTO> {
 
     private Company buildCreateCompany(CompanyRequestDTO dto) {
         Company company = new Company();
-        company.setCode(dto.getCode());
-        company.setName(dto.getName());
-        company.setInstructor(dto.getInstructor());
+        setCompanyInformation(dto, company);
 
         return company;
     }
 
     private void buildUpdateCompany(Company company, CompanyRequestDTO dto) {
-        company.setCode(dto.getCode());
+        setCompanyInformation(dto, company);
+    }
+
+    private static void setCompanyInformation(CompanyRequestDTO dto, Company company) {
         company.setName(dto.getName());
-        company.setInstructor(dto.getInstructor());
+        company.setAddress(dto.getAddress());
+        company.setEmail(dto.getEmail());
+        company.setMission(dto.getMission());
+        company.setVision(dto.getVision());
+        company.setPhone(dto.getPhone());
     }
 }

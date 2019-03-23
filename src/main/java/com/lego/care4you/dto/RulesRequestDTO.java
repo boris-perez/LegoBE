@@ -10,6 +10,9 @@ import lombok.Setter;
 @Setter
 public class RulesRequestDTO {
 
-    private String state;
+    private String name;
+
+    private String description;
+
     private String companyId;
 }

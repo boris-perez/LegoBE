@@ -13,11 +13,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Employee extends GenericDomain {
 
-    private String dni;
+    private String CI;
     private String firstName;
     private String lastName;
     private String address;
     private long phone;
     private String email;
-    private String jobDescription;
 }

@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class SafetyEquipment extends GenericDomain {
 
+    private String code;
     private String name;
     private String description;
     private Integer stock;

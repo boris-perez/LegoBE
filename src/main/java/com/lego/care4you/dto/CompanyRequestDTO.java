@@ -10,9 +10,11 @@ import lombok.Setter;
 @Setter
 public class CompanyRequestDTO {
 
-    private String code;
     private String name;
-    private String instructor;
-    private String departmentId;
+    private String vision;
+    private String mission;
+    private String address;
+    private String phone;
+    private String email;
 
 }

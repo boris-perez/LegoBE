@@ -12,9 +12,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Document
-public class Rules extends GenericDomain {
+public class Rule extends GenericDomain {
 
-    private String state;
+    private String name;
+
+    private String description;
 
     @DBRef
     private Company company;

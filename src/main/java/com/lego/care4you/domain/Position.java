@@ -15,8 +15,7 @@ import java.util.Date;
 @Document
 public class Position extends GenericDomain {
 
+    private String code;
     private String name;
     private String description;
-    private Date dateStart;
-    private Date dateEnd;
 }

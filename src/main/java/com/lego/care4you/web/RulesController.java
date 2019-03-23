@@ -1,8 +1,8 @@
 package com.lego.care4you.web;
 
-import com.lego.care4you.domain.Rules;
+import com.lego.care4you.domain.Rule;
 import com.lego.care4you.dto.RulesRequestDTO;
-import com.lego.care4you.service.RulesService;
+import com.lego.care4you.service.RuleService;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,40 +16,40 @@ import java.util.List;
 @Api(value = "rules", description = "Operations related to rules")
 public class RulesController {
 
-    private RulesService rulesService;
+    private RuleService ruleService;
 
-    public RulesController(RulesService rulesService) {
-        this.rulesService = rulesService;
+    public RulesController(RuleService ruleService) {
+        this.ruleService = ruleService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Rules> findAll() {
-        return rulesService.findAll();
+    public List<Rule> findAll() {
+        return ruleService.findAll();
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.GET)
-    public Rules findById(@PathVariable String id) {
-        return rulesService.findById(id);
+    public Rule findById(@PathVariable String id) {
+        return ruleService.findById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Rules insert(@RequestBody RulesRequestDTO dto) {
-        return rulesService.insert(dto);
+    public Rule insert(@RequestBody RulesRequestDTO dto) {
+        return ruleService.insert(dto);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE)
-    public Rules delete(@PathVariable String id) {
-        return rulesService.delete(id);
+    public Rule delete(@PathVariable String id) {
+        return ruleService.delete(id);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.PUT)
-    public Rules update(@PathVariable String id, @RequestBody RulesRequestDTO dto) {
-        return rulesService.update(id, dto);
+    public Rule update(@PathVariable String id, @RequestBody RulesRequestDTO dto) {
+        return ruleService.update(id, dto);
     }
 }

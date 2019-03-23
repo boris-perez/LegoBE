@@ -58,26 +58,23 @@ public class IncidentService extends GenericService<Incident, IncidentRequestDTO
 
     private Incident buildCreateIncident(IncidentRequestDTO dto) {
         Incident incident = new Incident();
-        incident.setIncidentName(dto.getIncidentName());
-        incident.setIncidentCode(dto.getIncidentCode());
-        incident.setIncidentType(dto.getIncidentType());
-        incident.setIncidentScope(dto.getIncidentScope());
-        incident.setIncidentObjective(dto.getIncidentObjective());
-        incident.setIncidentCriteria(dto.getIncidentCriteria());
-        incident.setIncidentPeriodicity(dto.getIncidentPeriodicity());
-        incident.setEmployee(employeeRepository.findOne(dto.getEmployeeId()));
+        setIncidentInformation(dto, incident);
 
         return incident;
     }
 
     private void buildUpdateIncident(Incident incident, IncidentRequestDTO dto) {
-        incident.setIncidentName(dto.getIncidentName());
-        incident.setIncidentType(dto.getIncidentType());
-        incident.setIncidentCode(dto.getIncidentCode());
-        incident.setIncidentScope(dto.getIncidentScope());
-        incident.setIncidentCriteria(dto.getIncidentCriteria());
-        incident.setIncidentObjective(dto.getIncidentObjective());
-        incident.setIncidentPeriodicity(dto.getIncidentPeriodicity());
+        setIncidentInformation(dto, incident);
+    }
+
+    private void setIncidentInformation(IncidentRequestDTO dto, Incident incident) {
+        incident.setName(dto.getName());
+        incident.setDate(dto.getDate());
+        incident.setDescription(dto.getDescription());
+        incident.setObservation(dto.getObservation());
+        incident.setType(dto.getType());
+        incident.setSeverity(dto.getSeverity());
+
         incident.setEmployee(employeeRepository.findOne(dto.getEmployeeId()));
     }
 }
