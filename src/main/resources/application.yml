@@ -14,6 +14,8 @@
 #    show-sql: true
 
 spring:
+  application:
+    name: care-for-you-persistence
   data:
     mongodb:
       uri: mongodb://localhost:27017/Care4You

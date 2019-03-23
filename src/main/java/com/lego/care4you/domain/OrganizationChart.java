@@ -6,15 +6,13 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Created by Alan.
+ * @author rveizaga
  */
 @Getter
 @Setter
 @Document
-public class Car extends GenericDomain {
-    private String brand;
-    private long year;
-    private String model;
-    private String color;
-    private String imageUrl;
+public class OrganizationChart extends GenericDomain {
+
+    private String title;
+    private String Description;
 }

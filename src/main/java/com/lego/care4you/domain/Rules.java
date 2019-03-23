@@ -3,17 +3,19 @@ package com.lego.care4you.domain;
 import com.lego.care4you.domain.bootstrap.GenericDomain;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Created by Alan.
+ * @author rveizaga
  */
 @Getter
 @Setter
 @Document
-public class Buyer extends GenericDomain {
-    private String name;
-    private String ci;
-    private String profession;
-    private long cellphone;
+public class Rules extends GenericDomain {
+
+    private String state;
+
+    @DBRef
+    private Company company;
 }
