@@ -4,7 +4,6 @@ import com.lego.care4you.domain.Department;
 import com.lego.care4you.dto.DepartmentRequestDTO;
 import com.lego.care4you.repository.DepartmentRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +14,11 @@ import java.util.List;
 @Service
 public class DepartmentService extends GenericService<Department, DepartmentRequestDTO> {
 
-    @Autowired
     private DepartmentRepository departmentRepository;
+
+    public DepartmentService(DepartmentRepository departmentRepository) {
+        this.departmentRepository = departmentRepository;
+    }
 
     @Override
     public List<Department> findAll() {

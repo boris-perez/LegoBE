@@ -4,7 +4,6 @@ import com.lego.care4you.domain.SafetyEquipment;
 import com.lego.care4you.dto.SafetyEquipmentRequestDTO;
 import com.lego.care4you.repository.SafetyEquipmentRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +14,11 @@ import java.util.List;
 @Service
 public class SafetyEquipmentService extends GenericService<SafetyEquipment, SafetyEquipmentRequestDTO> {
 
-    @Autowired
     private SafetyEquipmentRepository safetyEquipmentRepository;
+
+    public SafetyEquipmentService(SafetyEquipmentRepository safetyEquipmentRepository) {
+        this.safetyEquipmentRepository = safetyEquipmentRepository;
+    }
 
     @Override
     public List<SafetyEquipment> findAll() {

@@ -1,11 +1,9 @@
 package com.lego.care4you.web;
 
 import com.lego.care4you.domain.Employee;
+import com.lego.care4you.dto.EmployeeRequestDTO;
 import com.lego.care4you.service.EmployeeService;
 import io.swagger.annotations.Api;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,43 +16,40 @@ import java.util.List;
 @Api(value = "employees", description = "Operations related to employees")
 public class EmployeeController {
 
-    @Autowired
     private EmployeeService employeeService;
 
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<Employee> getSellers() {
+    public List<Employee> findAll() {
         return employeeService.findAll();
     }
 
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET)
+    public Employee findById(@PathVariable String id) {
+        return employeeService.findById(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public Employee addSeller(@RequestBody EmployeeRequestDTO workDTO) {
-        return employeeService.insert(workDTO);
+    public Employee insert(@RequestBody EmployeeRequestDTO dto) {
+        return employeeService.insert(dto);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE)
-    public Employee deleteSeller(@PathVariable String id) {
+    public Employee delete(@PathVariable String id) {
         return employeeService.delete(id);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.PUT)
-    public Employee updateSeller(@PathVariable String id, @RequestBody EmployeeRequestDTO workRequestDTO) {
-        return employeeService.update(id, workRequestDTO);
-    }
-
-    @Getter
-    @Setter
-    public static class EmployeeRequestDTO {
-
-        private String dni;
-        private String firstName;
-        private String lastName;
-        private String address;
-        private long phone;
-        private String email;
-        private String jobDescription;
+    public Employee update(@PathVariable String id, @RequestBody EmployeeRequestDTO dto) {
+        return employeeService.update(id, dto);
     }
 }

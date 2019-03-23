@@ -4,7 +4,6 @@ import com.lego.care4you.domain.OrganizationChart;
 import com.lego.care4you.dto.OrganizationChartRequestDTO;
 import com.lego.care4you.repository.OrganizationChartRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +14,11 @@ import java.util.List;
 @Service
 public class OrganizationChartService extends GenericService<OrganizationChart, OrganizationChartRequestDTO> {
 
-    @Autowired
     private OrganizationChartRepository organizationChartRepository;
+
+    public OrganizationChartService(OrganizationChartRepository organizationChartRepository) {
+        this.organizationChartRepository = organizationChartRepository;
+    }
 
     @Override
     public List<OrganizationChart> findAll() {

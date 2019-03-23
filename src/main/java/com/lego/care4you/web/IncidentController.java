@@ -4,7 +4,6 @@ import com.lego.care4you.domain.Incident;
 import com.lego.care4you.dto.IncidentRequestDTO;
 import com.lego.care4you.service.IncidentService;
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,30 +16,40 @@ import java.util.List;
 @Api(value = "incidents", description = "Operations related to incidents")
 public class IncidentController {
 
-    @Autowired
     private IncidentService incidentService;
 
+    public IncidentController(IncidentService incidentService) {
+        this.incidentService = incidentService;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<Incident> getSellers() {
+    public List<Incident> findAll() {
         return incidentService.findAll();
     }
 
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET)
+    public Incident findById(@PathVariable String id) {
+        return incidentService.findById(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public Incident addSeller(@RequestBody IncidentRequestDTO incidentRequestDTO) {
-        return incidentService.insert(incidentRequestDTO);
+    public Incident insert(@RequestBody IncidentRequestDTO dto) {
+        return incidentService.insert(dto);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE)
-    public Incident deleteSeller(@PathVariable String id) {
+    public Incident delete(@PathVariable String id) {
         return incidentService.delete(id);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.PUT)
-    public Incident updateSeller(@PathVariable String id, @RequestBody IncidentRequestDTO incidentRequestDTO) {
-        return incidentService.update(id, incidentRequestDTO);
+    public Incident update(@PathVariable String id, @RequestBody IncidentRequestDTO dto) {
+        return incidentService.update(id, dto);
     }
 }

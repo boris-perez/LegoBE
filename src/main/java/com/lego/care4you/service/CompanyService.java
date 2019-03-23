@@ -4,7 +4,6 @@ import com.lego.care4you.domain.Company;
 import com.lego.care4you.dto.CompanyRequestDTO;
 import com.lego.care4you.repository.CompanyRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +14,11 @@ import java.util.List;
 @Service
 public class CompanyService extends GenericService<Company, CompanyRequestDTO> {
 
-    @Autowired
     private CompanyRepository companyRepository;
+
+    public CompanyService(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
+    }
 
     @Override
     public List<Company> findAll() {

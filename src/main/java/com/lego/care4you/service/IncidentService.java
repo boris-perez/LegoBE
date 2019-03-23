@@ -5,7 +5,6 @@ import com.lego.care4you.dto.IncidentRequestDTO;
 import com.lego.care4you.repository.EmployeeRepository;
 import com.lego.care4you.repository.IncidentRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +15,14 @@ import java.util.List;
 @Service
 public class IncidentService extends GenericService<Incident, IncidentRequestDTO> {
 
-    @Autowired
     private IncidentRepository incidentRepository;
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+
+    public IncidentService(IncidentRepository incidentRepository, EmployeeRepository employeeRepository) {
+        this.incidentRepository = incidentRepository;
+        this.employeeRepository = employeeRepository;
+    }
 
     @Override
     public List<Incident> findAll() {

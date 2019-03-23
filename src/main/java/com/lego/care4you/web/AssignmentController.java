@@ -4,7 +4,6 @@ import com.lego.care4you.domain.Assignment;
 import com.lego.care4you.dto.AssignmentRequestDTO;
 import com.lego.care4you.service.AssignmentService;
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,30 +16,40 @@ import java.util.List;
 @Api(value = "assignments", description = "Operations related to assignments")
 public class AssignmentController {
 
-    @Autowired
     private AssignmentService assignmentService;
 
+    public AssignmentController(AssignmentService assignmentService) {
+        this.assignmentService = assignmentService;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<Assignment> getSellers() {
+    public List<Assignment> findAll() {
         return assignmentService.findAll();
     }
 
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET)
+    public Assignment findById(@PathVariable String id) {
+        return assignmentService.findById(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public Assignment addSeller(@RequestBody AssignmentRequestDTO assignmentRequestDTO) {
-        return assignmentService.insert(assignmentRequestDTO);
+    public Assignment insert(@RequestBody AssignmentRequestDTO dto) {
+        return assignmentService.insert(dto);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE)
-    public Assignment deleteSeller(@PathVariable String id) {
+    public Assignment delete(@PathVariable String id) {
         return assignmentService.delete(id);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.PUT)
-    public Assignment updateSeller(@PathVariable String id, @RequestBody AssignmentRequestDTO assignmentRequestDTO) {
-        return assignmentService.update(id, assignmentRequestDTO);
+    public Assignment update(@PathVariable String id, @RequestBody AssignmentRequestDTO dto) {
+        return assignmentService.update(id, dto);
     }
 }

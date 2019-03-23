@@ -4,7 +4,6 @@ import com.lego.care4you.domain.Assignment;
 import com.lego.care4you.dto.AssignmentRequestDTO;
 import com.lego.care4you.repository.*;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,20 +14,23 @@ import java.util.List;
 @Service
 public class AssignmentService extends GenericService<Assignment, AssignmentRequestDTO> {
 
-    @Autowired
     private AssignmentRepository assignmentRepository;
 
-    @Autowired
     private DepartmentRepository departmentRepository;
 
-    @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
     private SafetyEquipmentRepository safetyEquipmentRepository;
 
-    @Autowired
     private OrganizationChartRepository organizationChartRepository;
+
+    public AssignmentService(AssignmentRepository assignmentRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository, SafetyEquipmentRepository safetyEquipmentRepository, OrganizationChartRepository organizationChartRepository) {
+        this.assignmentRepository = assignmentRepository;
+        this.departmentRepository = departmentRepository;
+        this.employeeRepository = employeeRepository;
+        this.safetyEquipmentRepository = safetyEquipmentRepository;
+        this.organizationChartRepository = organizationChartRepository;
+    }
 
     @Override
     public List<Assignment> findAll() {
@@ -64,15 +66,16 @@ public class AssignmentService extends GenericService<Assignment, AssignmentRequ
 
     private Assignment buildCreateAssignment(AssignmentRequestDTO dto) {
         Assignment assignment = new Assignment();
-        assignment.setDepartment(departmentRepository.findOne(dto.getDepartmentId()));
-        assignment.setEmployee(employeeRepository.findOne(dto.getEmployeeId()));
-        assignment.setSafetyEquipment(safetyEquipmentRepository.findOne(dto.getSafetyEquipmentId()));
-        assignment.setOrganizationChart(organizationChartRepository.findOne(dto.getOrganizationChartId()));
+        setAssignmentInformation(dto, assignment);
 
         return assignment;
     }
 
     private void buildUpdateAssignment(Assignment assignment, AssignmentRequestDTO dto) {
+        setAssignmentInformation(dto, assignment);
+    }
+
+    private void setAssignmentInformation(AssignmentRequestDTO dto, Assignment assignment) {
         assignment.setDepartment(departmentRepository.findOne(dto.getDepartmentId()));
         assignment.setEmployee(employeeRepository.findOne(dto.getEmployeeId()));
         assignment.setSafetyEquipment(safetyEquipmentRepository.findOne(dto.getSafetyEquipmentId()));

@@ -1,12 +1,11 @@
 package com.lego.care4you.service;
 
 import com.lego.care4you.domain.Work;
+import com.lego.care4you.dto.WorkRequestDTO;
 import com.lego.care4you.repository.EmployeeRepository;
 import com.lego.care4you.repository.PositionRepository;
 import com.lego.care4you.repository.WorkRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import com.lego.care4you.web.WorkController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,16 +16,19 @@ import java.util.List;
  */
 
 @Service
-public class WorkService extends GenericService<Work, WorkController.WorkRequestDTO> {
+public class WorkService extends GenericService<Work, WorkRequestDTO> {
 
-    @Autowired
     private WorkRepository workRepository;
 
-    @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
     private PositionRepository positionRepository;
+
+    public WorkService(WorkRepository workRepository, EmployeeRepository employeeRepository, PositionRepository positionRepository) {
+        this.workRepository = workRepository;
+        this.employeeRepository = employeeRepository;
+        this.positionRepository = positionRepository;
+    }
 
     @Override
     public List<Work> findAll() {
@@ -48,7 +50,7 @@ public class WorkService extends GenericService<Work, WorkController.WorkRequest
     }
 
     @Override
-    public Work insert(WorkController.WorkRequestDTO dto) {
+    public Work insert(WorkRequestDTO dto) {
         Work work = buildCreateWork(dto);
 
         workRepository.insert(work);
@@ -57,7 +59,7 @@ public class WorkService extends GenericService<Work, WorkController.WorkRequest
     }
 
     @Override
-    public Work update(String id, WorkController.WorkRequestDTO dto) {
+    public Work update(String id, WorkRequestDTO dto) {
         Work work = findById(id);
 
         buildUpdateWork(work, dto);
@@ -66,7 +68,7 @@ public class WorkService extends GenericService<Work, WorkController.WorkRequest
         return work;
     }
 
-    private Work buildCreateWork(WorkController.WorkRequestDTO dto) {
+    private Work buildCreateWork(WorkRequestDTO dto) {
         Work work = new Work();
         work.setWorkAmount(dto.getWorkAmount());
         work.setWorkCode(dto.getWorkCode());
@@ -80,7 +82,7 @@ public class WorkService extends GenericService<Work, WorkController.WorkRequest
         return work;
     }
 
-    private void buildUpdateWork(Work work, WorkController.WorkRequestDTO dto){
+    private void buildUpdateWork(Work work, WorkRequestDTO dto) {
         work.setWorkAmount(dto.getWorkAmount());
         work.setWorkCode(dto.getWorkCode());
         work.setPaymentType(dto.getPaymentType());

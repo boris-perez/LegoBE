@@ -4,7 +4,6 @@ import com.lego.care4you.domain.SafetyEquipment;
 import com.lego.care4you.dto.SafetyEquipmentRequestDTO;
 import com.lego.care4you.service.SafetyEquipmentService;
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,30 +16,40 @@ import java.util.List;
 @Api(value = "safetyEquipments", description = "Operations related to safetyEquipments")
 public class SafetyEquipmentController {
 
-    @Autowired
     private SafetyEquipmentService safetyEquipmentService;
 
+    public SafetyEquipmentController(SafetyEquipmentService safetyEquipmentService) {
+        this.safetyEquipmentService = safetyEquipmentService;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<SafetyEquipment> getSellers() {
+    public List<SafetyEquipment> findAll() {
         return safetyEquipmentService.findAll();
     }
 
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.GET)
+    public SafetyEquipment findById(@PathVariable String id) {
+        return safetyEquipmentService.findById(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    public SafetyEquipment addSeller(@RequestBody SafetyEquipmentRequestDTO workDTO) {
-        return safetyEquipmentService.insert(workDTO);
+    public SafetyEquipment insert(@RequestBody SafetyEquipmentRequestDTO dto) {
+        return safetyEquipmentService.insert(dto);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE)
-    public SafetyEquipment deleteSeller(@PathVariable String id) {
+    public SafetyEquipment delete(@PathVariable String id) {
         return safetyEquipmentService.delete(id);
     }
 
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.PUT)
-    public SafetyEquipment updateSeller(@PathVariable String id, @RequestBody SafetyEquipmentRequestDTO workRequestDTO) {
-        return safetyEquipmentService.update(id, workRequestDTO);
+    public SafetyEquipment update(@PathVariable String id, @RequestBody SafetyEquipmentRequestDTO dto) {
+        return safetyEquipmentService.update(id, dto);
     }
 }

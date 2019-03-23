@@ -4,7 +4,6 @@ import com.lego.care4you.domain.Position;
 import com.lego.care4you.dto.PositionRequestDTO;
 import com.lego.care4you.repository.PositionRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,8 +15,11 @@ import java.util.List;
 @Service
 public class PositionService extends GenericService<Position, PositionRequestDTO> {
 
-    @Autowired
     private PositionRepository positionRepository;
+
+    public PositionService(PositionRepository positionRepository) {
+        this.positionRepository = positionRepository;
+    }
 
     @Override
     public List<Position> findAll() {

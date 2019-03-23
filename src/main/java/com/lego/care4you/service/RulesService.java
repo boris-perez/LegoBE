@@ -5,7 +5,6 @@ import com.lego.care4you.dto.RulesRequestDTO;
 import com.lego.care4you.repository.CompanyRepository;
 import com.lego.care4you.repository.RulesRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,11 +15,14 @@ import java.util.List;
 @Service
 public class RulesService extends GenericService<Rules, RulesRequestDTO> {
 
-    @Autowired
     private RulesRepository rulesRepository;
 
-    @Autowired
     private CompanyRepository companyRepository;
+
+    public RulesService(RulesRepository rulesRepository, CompanyRepository companyRepository) {
+        this.rulesRepository = rulesRepository;
+        this.companyRepository = companyRepository;
+    }
 
     @Override
     public List<Rules> findAll() {
