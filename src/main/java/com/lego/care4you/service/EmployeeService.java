@@ -72,12 +72,11 @@ public class EmployeeService extends GenericService<Employee, EmployeeRequestDTO
     }
 
     private static void setEmployeeInformation(EmployeeRequestDTO dto, Employee employee) {
-        employee.setDni(dto.getDni());
+        employee.setCI(dto.getCI());
         employee.setFirstName(dto.getFirstName());
         employee.setLastName(dto.getLastName());
         employee.setAddress(dto.getAddress());
         employee.setEmail(dto.getEmail());
         employee.setPhone(dto.getPhone());
-        employee.setJobDescription(dto.getJobDescription());
     }
 }

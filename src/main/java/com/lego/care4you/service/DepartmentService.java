@@ -1,7 +1,9 @@
 package com.lego.care4you.service;
 
+import com.lego.care4you.domain.Company;
 import com.lego.care4you.domain.Department;
 import com.lego.care4you.dto.DepartmentRequestDTO;
+import com.lego.care4you.repository.CompanyRepository;
 import com.lego.care4you.repository.DepartmentRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,11 @@ public class DepartmentService extends GenericService<Department, DepartmentRequ
 
     private DepartmentRepository departmentRepository;
 
-    public DepartmentService(DepartmentRepository departmentRepository) {
+    private CompanyRepository companyRepository;
+
+    public DepartmentService(DepartmentRepository departmentRepository, CompanyRepository companyRepository) {
         this.departmentRepository = departmentRepository;
+        this.companyRepository = companyRepository;
     }
 
     @Override
@@ -54,14 +59,19 @@ public class DepartmentService extends GenericService<Department, DepartmentRequ
 
     private Department buildCreateDepartment(DepartmentRequestDTO dto) {
         Department department = new Department();
-        department.setName(dto.getName());
-        department.setCode(dto.getCode());
+        setDepartmentInformation(dto, department);
 
         return department;
     }
 
     private void buildUpdateDepartment(Department department, DepartmentRequestDTO dto) {
+        setDepartmentInformation(dto, department);
+    }
+
+    private void setDepartmentInformation(DepartmentRequestDTO dto, Department department) {
         department.setName(dto.getName());
         department.setCode(dto.getCode());
+        department.setDescription(dto.getDescription());
+        department.setCompany(companyRepository.findOne(dto.getCompanyId()));
     }
 }

@@ -18,17 +18,14 @@ public class AssignmentService extends GenericService<Assignment, AssignmentRequ
 
     private DepartmentRepository departmentRepository;
 
-    private EmployeeRepository employeeRepository;
-
-    private SafetyEquipmentRepository safetyEquipmentRepository;
+    private PositionRepository positionRepository;
 
     private OrganizationChartRepository organizationChartRepository;
 
-    public AssignmentService(AssignmentRepository assignmentRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository, SafetyEquipmentRepository safetyEquipmentRepository, OrganizationChartRepository organizationChartRepository) {
+    public AssignmentService(AssignmentRepository assignmentRepository, DepartmentRepository departmentRepository, PositionRepository positionRepository, OrganizationChartRepository organizationChartRepository) {
         this.assignmentRepository = assignmentRepository;
         this.departmentRepository = departmentRepository;
-        this.employeeRepository = employeeRepository;
-        this.safetyEquipmentRepository = safetyEquipmentRepository;
+        this.positionRepository = positionRepository;
         this.organizationChartRepository = organizationChartRepository;
     }
 
@@ -76,9 +73,8 @@ public class AssignmentService extends GenericService<Assignment, AssignmentRequ
     }
 
     private void setAssignmentInformation(AssignmentRequestDTO dto, Assignment assignment) {
-        assignment.setDepartment(departmentRepository.findOne(dto.getDepartmentId()));
-        assignment.setEmployee(employeeRepository.findOne(dto.getEmployeeId()));
-        assignment.setSafetyEquipment(safetyEquipmentRepository.findOne(dto.getSafetyEquipmentId()));
         assignment.setOrganizationChart(organizationChartRepository.findOne(dto.getOrganizationChartId()));
+        assignment.setDepartment(departmentRepository.findOne(dto.getDepartmentId()));
+        assignment.setPosition(positionRepository.findOne(dto.getSafetyEquipmentId()));
     }
 }

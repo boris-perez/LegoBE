@@ -1,8 +1,11 @@
 package com.lego.care4you.dto;
 
+import com.lego.care4you.domain.enums.IncidentSeverity;
 import com.lego.care4you.domain.enums.IncidentType;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 
 /**
  * @author ricardo.veizaga
@@ -11,12 +14,12 @@ import lombok.Setter;
 @Setter
 public class IncidentRequestDTO {
 
-    private String incidentName;
-    private String incidentCode;
-    private IncidentType incidentType;
-    private String incidentScope;
-    private String incidentObjective;
-    private String incidentCriteria;
-    private String incidentPeriodicity;
+    private String name;
+    private String description;
+    private Date date;
+    private IncidentType type;
+    private IncidentSeverity severity;
+    private String observation;
+
     private String employeeId;
 }

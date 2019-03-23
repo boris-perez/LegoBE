@@ -14,7 +14,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Rules extends GenericDomain {
 
-    private String state;
+    private String name;
+
+    private String description;
 
     @DBRef
     private Company company;
