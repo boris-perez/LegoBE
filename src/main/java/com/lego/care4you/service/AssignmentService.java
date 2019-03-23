@@ -75,6 +75,6 @@ public class AssignmentService extends GenericService<Assignment, AssignmentRequ
     private void setAssignmentInformation(AssignmentRequestDTO dto, Assignment assignment) {
         assignment.setOrganizationChart(organizationChartRepository.findOne(dto.getOrganizationChartId()));
         assignment.setDepartment(departmentRepository.findOne(dto.getDepartmentId()));
-        assignment.setPosition(positionRepository.findOne(dto.getSafetyEquipmentId()));
+        assignment.setPosition(positionRepository.findOne(dto.getPositionId()));
     }
 }

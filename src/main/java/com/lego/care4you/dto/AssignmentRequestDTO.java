@@ -12,7 +12,6 @@ public class AssignmentRequestDTO {
 
     private String organizationChartId;
     private String departmentId;
-    private String safetyEquipmentId;
-    private String employeeId;
+    private String positionId;
 
 }

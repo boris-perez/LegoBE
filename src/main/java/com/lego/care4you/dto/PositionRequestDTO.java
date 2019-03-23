@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class PositionRequestDTO {
 
+    private String code;
     private String name;
     private String description;
 }

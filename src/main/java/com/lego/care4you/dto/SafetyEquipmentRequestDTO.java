@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class SafetyEquipmentRequestDTO {
 
+    private String code;
     private String name;
     private String description;
     private Integer stock;

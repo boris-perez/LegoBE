@@ -58,17 +58,16 @@ public class PositionService extends GenericService<Position, PositionRequestDTO
 
     private Position buildCreatePosition(PositionRequestDTO dto) {
         Position position = new Position();
+        position.setCode(dto.getCode());
         position.setName(dto.getName());
         position.setDescription(dto.getDescription());
-        position.setDateStart(new Date());
-        position.setDateEnd(new Date());
 
         return position;
     }
 
     private void buildUpdatePosition(Position position, PositionRequestDTO dto) {
+        position.setCode(dto.getCode());
         position.setName(dto.getName());
         position.setDescription(dto.getDescription());
-
     }
 }
