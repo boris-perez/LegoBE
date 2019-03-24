@@ -3,9 +3,7 @@ package com.lego.care4you.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author alain.quinones
- */
+
 @Getter
 @Setter
 public class EmployeeRequestDTO {

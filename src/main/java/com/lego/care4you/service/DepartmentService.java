@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author ricardo.veizaga
- */
+
 @Service
 public class DepartmentService extends GenericService<Department, DepartmentRequestDTO> {
 

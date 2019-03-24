@@ -6,9 +6,7 @@ import com.lego.care4you.repository.bootstrap.GenericRepository;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author rveizaga
- */
+
 public interface SafetyEquipmentRepository extends GenericRepository<SafetyEquipment> {
 
     List<SafetyEquipment> findSafetyEquipmentsByCreatedDateOrderByCreatedDateDesc(Date createdDate);

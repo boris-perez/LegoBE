@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author rveizaga
- */
+
 @Service
 public class EmployeeService extends GenericService<Employee, EmployeeRequestDTO> {
 

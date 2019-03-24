@@ -7,9 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-/**
- * @author rveizaga
- */
+
 @Getter
 @Setter
 @Document

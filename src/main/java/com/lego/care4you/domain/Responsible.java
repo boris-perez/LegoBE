@@ -6,9 +6,7 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * @author alain.quinones
- */
+
 @Getter
 @Setter
 @Document

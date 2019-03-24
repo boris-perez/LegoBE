@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @author ricardo.veizaga
- */
+
 @RestController
 @RequestMapping("/safetyEquipments")
 @Api(value = "safetyEquipments", description = "Operations related to safetyEquipments")

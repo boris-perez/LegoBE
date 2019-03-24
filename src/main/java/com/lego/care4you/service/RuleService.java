@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author ricardo.veizaga
- */
+
 @Service
 public class RuleService extends GenericService<Rule, RulesRequestDTO> {
 

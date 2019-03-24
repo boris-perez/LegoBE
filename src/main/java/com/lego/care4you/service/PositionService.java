@@ -6,12 +6,9 @@ import com.lego.care4you.repository.PositionRepository;
 import com.lego.care4you.service.bootstrap.GenericService;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
-/**
- * @author ricardo.veizaga
- */
+
 @Service
 public class PositionService extends GenericService<Position, PositionRequestDTO> {
 

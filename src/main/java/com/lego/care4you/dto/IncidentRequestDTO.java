@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
-/**
- * @author ricardo.veizaga
- */
+
 @Getter
 @Setter
 public class IncidentRequestDTO {

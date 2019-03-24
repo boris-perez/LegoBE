@@ -5,9 +5,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
-/**
- * @author alain.quinones
- */
+
 @Getter
 @Setter
 public class WorkRequestDTO {
